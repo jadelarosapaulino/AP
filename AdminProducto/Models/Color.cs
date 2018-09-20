@@ -13,6 +13,8 @@ namespace AdminProducto.Models
         public string color { get; set; }
         public string codigo { get; set; }
 
+        conexion cd = new conexion();
+
         conexion conexion = new conexion();
 
         // Realiza filtra color o traer listado de ellas
@@ -57,23 +59,15 @@ namespace AdminProducto.Models
         #region Registrar Color
         public void SetColor(Color color)
         {
-            DataTable dt = new DataTable();
-
-            SqlConnection cn = new SqlConnection(conexion.conectar);
-            cn.Open();
-
-            SqlCommand cmd = cn.CreateCommand();
+            List<SqlParameter> param = new List<SqlParameter>()
+            {
+                new SqlParameter("@color", color.color),
+                new SqlParameter("@codigo", color.codigo)
+            };
 
             try
             {
-                cmd.CommandText = "Proc_Color_Inserta";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@color", color.color);
-                cmd.Parameters.AddWithValue("@codigo", color.codigo);
-
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-                cn.Close();
+                cd.ConectarDatos("Proc_Color_Inserta", param.ToArray());
             }
             catch (Exception ex)
             {

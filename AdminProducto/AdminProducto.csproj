@@ -59,9 +59,24 @@
     <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.2.4\lib\net451\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.4\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.4\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenPop, Version=2.0.6.1120, Culture=neutral, PublicKeyToken=6bdb97f144b7efc8, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenPop.NET.2.0.6.1120\lib\net40\OpenPop.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.4\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -176,6 +191,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\Proc_Producto_Consultar_Todo_Result.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Proc_Usuarios_Login_Result.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Usuario.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -208,22 +232,44 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="App_Data\Categoria.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Color.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
+    <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Controllers\EstadoController.cs" />
     <Compile Include="Controllers\Factura_CompraController.cs" />
     <Compile Include="Controllers\FilesUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarcaController.cs" />
     <Compile Include="Controllers\ModeloController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
+    <Compile Include="App_Data\Estado.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Factura.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Lib\ImageUpload.cs" />
+    <Compile Include="App_Data\Marca.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Modelo.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\conexion.cs" />
+    <Compile Include="Models\DataAccess.cs" />
     <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\Factura_Compra.cs" />
     <Compile Include="Models\ImageResult.cs" />
@@ -232,7 +278,52 @@
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\Tipo_Compra.cs" />
     <Compile Include="Models\Vendedor.cs" />
+    <Compile Include="App_Data\Proc_Categoria_Consulta_Result.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Proc_Color_Consulta_Result.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Proc_Color_Producto_Consulta_Result.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Proc_Estado_Consulta_Result.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Proc_Factura_Consulta_Result.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Proc_Factura_Producto_Consulta_Result.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Proc_Producto_Consulta_Result.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Producto.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\ProductoDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductoDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\ProductoDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\ProductoDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductoDataModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="App_Data\Tipo_Compra.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Vendedor.cs">
+      <DependentUpon>ProductoDataModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -243,6 +334,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="App_Data\ProductoDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProductoDataModel.edmx</DependentUpon>
+      <LastGenOutput>ProductoDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_Data\ProductoDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProductoDataModel.edmx</DependentUpon>
+      <LastGenOutput>ProductoDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -266,6 +367,13 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="App_Data\ProductoDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProductoDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="App_Data\ProductoDataModel.edmx.diagram">
+      <DependentUpon>ProductoDataModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -291,7 +399,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="UploadedFiles\" />
     <Folder Include="Views\FilesUpload\" />
   </ItemGroup>

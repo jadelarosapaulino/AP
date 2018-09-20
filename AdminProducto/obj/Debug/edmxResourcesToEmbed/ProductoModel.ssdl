@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="categoriaID" />
+    </Key>
+    <Property Name="categoriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoria_nombre" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="colorID" />
+    </Key>
+    <Property Name="colorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="color" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Color_Producto">
+    <Key>
+      <PropertyRef Name="colorID" />
+      <PropertyRef Name="productoID" />
+    </Key>
+    <Property Name="colorID" Type="int" Nullable="false" />
+    <Property Name="productoID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="estadoID" />
+    </Key>
+    <Property Name="estadoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="facturaID" />
+    </Key>
+    <Property Name="facturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="factura_fecha" Type="datetime" Nullable="false" />
+    <Property Name="compra_tipoID" Type="int" />
+    <Property Name="vendedorID" Type="int" />
+  </EntityType>
+  <EntityType Name="Factura_Producto">
+    <Key>
+      <PropertyRef Name="facturaID" />
+      <PropertyRef Name="productoID" />
+    </Key>
+    <Property Name="facturaID" Type="int" Nullable="false" />
+    <Property Name="productoID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Marca">
+    <Key>
+      <PropertyRef Name="marcaID" />
+    </Key>
+    <Property Name="marcaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="marca_nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="img" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Modelo">
+    <Key>
+      <PropertyRef Name="modeloID" />
+    </Key>
+    <Property Name="modeloID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="modelo_nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="marcaID" Type="int" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="productoID" />
+    </Key>
+    <Property Name="productoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="serie" Type="varchar" MaxLength="30" />
+    <Property Name="precio_compra" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="precio_venta" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="marcaID" Type="int" />
+    <Property Name="modeloID" Type="int" />
+    <Property Name="categoriaID" Type="int" />
+    <Property Name="estadoID" Type="int" />
+    <Property Name="activo" Type="nchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="Tipo_Compra">
+    <Key>
+      <PropertyRef Name="compra_tipoID" />
+    </Key>
+    <Property Name="compra_tipoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="compra_tipo" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Vendedor">
+    <Key>
+      <PropertyRef Name="vendedorID" />
+    </Key>
+    <Property Name="vendedorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vendedor" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <Association Name="Categoria_Producto">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="categoriaID" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="categoriaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Color_Color_Producto">
+    <End Role="Color" Type="Self.Color" Multiplicity="1" />
+    <End Role="Color_Producto" Type="Self.Color_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="colorID" />
+      </Principal>
+      <Dependent Role="Color_Producto">
+        <PropertyRef Name="colorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Estado_Producto">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="estadoID" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="estadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Factura_Factura_Producto">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+    <End Role="Factura_Producto" Type="Self.Factura_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="facturaID" />
+      </Principal>
+      <Dependent Role="Factura_Producto">
+        <PropertyRef Name="facturaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Marca_Modelo">
+    <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+    <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marca">
+        <PropertyRef Name="marcaID" />
+      </Principal>
+      <Dependent Role="Modelo">
+        <PropertyRef Name="marcaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Marca_Producto">
+    <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marca">
+        <PropertyRef Name="marcaID" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="marcaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Modelo_Producto">
+    <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modelo">
+        <PropertyRef Name="modeloID" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="modeloID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Producto_Color_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Color_Producto" Type="Self.Color_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="productoID" />
+      </Principal>
+      <Dependent Role="Color_Producto">
+        <PropertyRef Name="productoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Producto_Factura_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Factura_Producto" Type="Self.Factura_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="productoID" />
+      </Principal>
+      <Dependent Role="Factura_Producto">
+        <PropertyRef Name="productoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Tipo_Compra_Factura">
+    <End Role="Tipo_Compra" Type="Self.Tipo_Compra" Multiplicity="0..1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Compra">
+        <PropertyRef Name="compra_tipoID" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="compra_tipoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Vendedor_Factura">
+    <End Role="Vendedor" Type="Self.Vendedor" Multiplicity="0..1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendedor">
+        <PropertyRef Name="vendedorID" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="vendedorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Proc_Categoria_Actualiza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="categoriaID" Type="int" Mode="In" />
+    <Parameter Name="categoria_nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Categoria_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="categoriaID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Categoria_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="categoria_nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Color_Actualiza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="colorID" Type="int" Mode="In" />
+    <Parameter Name="color" Type="varchar" Mode="In" />
+    <Parameter Name="codigo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Color_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="colorID" Type="int" Mode="In" />
+    <Parameter Name="color" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Color_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="color" Type="varchar" Mode="In" />
+    <Parameter Name="codigo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Color_Producto_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="colorID" Type="int" Mode="In" />
+    <Parameter Name="productoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Color_Producto_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="colorID" Type="int" Mode="In" />
+    <Parameter Name="productoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Estado_Actualiza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="estadoID" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Estado_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="estadoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Estado_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="estadoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Estado_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Factura_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="facturaID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Factura_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="compra_tipoID" Type="int" Mode="In" />
+    <Parameter Name="vendedorID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Factura_Producto_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="facturaID" Type="int" Mode="In" />
+    <Parameter Name="productoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Factura_Producto_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="facturaID" Type="int" Mode="In" />
+    <Parameter Name="productoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Marca_Actualiza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="marcaID" Type="int" Mode="In" />
+    <Parameter Name="marca_nombre" Type="varchar" Mode="In" />
+    <Parameter Name="img" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Marca_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="marcaID" Type="int" Mode="In" />
+    <Parameter Name="marca_nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Marca_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="marcaID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Marca_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="marca_nombre" Type="varchar" Mode="In" />
+    <Parameter Name="img" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Modelo_Actualiza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="modeloID" Type="int" Mode="In" />
+    <Parameter Name="modelo_nombre" Type="varchar" Mode="In" />
+    <Parameter Name="marcaID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Modelo_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="modeloID" Type="int" Mode="In" />
+    <Parameter Name="modelo_nombre" Type="varchar" Mode="In" />
+    <Parameter Name="marcaID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Modelo_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="modelo_nombre" Type="varchar" Mode="In" />
+    <Parameter Name="marcaID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Producto_Actualiza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="productoID" Type="int" Mode="In" />
+    <Parameter Name="precio_compra" Type="decimal" Mode="In" />
+    <Parameter Name="precio_venta" Type="decimal" Mode="In" />
+    <Parameter Name="marcaID" Type="int" Mode="In" />
+    <Parameter Name="modeloID" Type="int" Mode="In" />
+    <Parameter Name="categoriaID" Type="int" Mode="In" />
+    <Parameter Name="estadoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Producto_Actualiza_Estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="productoID" Type="int" Mode="In" />
+    <Parameter Name="activo" Type="char" Mode="In" />
+  </Function>
+  <Function Name="Proc_Producto_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="productoID" Type="int" Mode="In" />
+    <Parameter Name="serie" Type="varchar" Mode="In" />
+    <Parameter Name="page" Type="int" Mode="In" />
+    <Parameter Name="index" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Producto_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="serie" Type="varchar" Mode="In" />
+    <Parameter Name="precio_compra" Type="decimal" Mode="In" />
+    <Parameter Name="precio_venta" Type="decimal" Mode="In" />
+    <Parameter Name="marcaID" Type="int" Mode="In" />
+    <Parameter Name="modeloID" Type="int" Mode="In" />
+    <Parameter Name="categoriaID" Type="int" Mode="In" />
+    <Parameter Name="estadoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Tipo_Compra_Actualiza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="compra_tipoID" Type="int" Mode="In" />
+    <Parameter Name="compra_tipo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Tipo_Compra_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="compra_tipoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_Tipo_Compra_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="compra_tipo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Vendedor_Actualiza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vendedorID" Type="int" Mode="In" />
+    <Parameter Name="vendedor" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Vendedor_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vendedorID" Type="int" Mode="In" />
+    <Parameter Name="vendedor" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Vendedor_Inserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vendedor" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ProductosModelStoreContainer">
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Color_Producto" EntityType="Self.Color_Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Factura_Producto" EntityType="Self.Factura_Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modelo" EntityType="Self.Modelo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Compra" EntityType="Self.Tipo_Compra" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendedor" EntityType="Self.Vendedor" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Categoria_Producto" Association="Self.Categoria_Producto">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Color_Color_Producto" Association="Self.Color_Color_Producto">
+      <End Role="Color" EntitySet="Color" />
+      <End Role="Color_Producto" EntitySet="Color_Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Estado_Producto" Association="Self.Estado_Producto">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Factura_Factura_Producto" Association="Self.Factura_Factura_Producto">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="Factura_Producto" EntitySet="Factura_Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Marca_Modelo" Association="Self.Marca_Modelo">
+      <End Role="Marca" EntitySet="Marca" />
+      <End Role="Modelo" EntitySet="Modelo" />
+    </AssociationSet>
+    <AssociationSet Name="Marca_Producto" Association="Self.Marca_Producto">
+      <End Role="Marca" EntitySet="Marca" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Modelo_Producto" Association="Self.Modelo_Producto">
+      <End Role="Modelo" EntitySet="Modelo" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Producto_Color_Producto" Association="Self.Producto_Color_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Color_Producto" EntitySet="Color_Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Producto_Factura_Producto" Association="Self.Producto_Factura_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Factura_Producto" EntitySet="Factura_Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Tipo_Compra_Factura" Association="Self.Tipo_Compra_Factura">
+      <End Role="Tipo_Compra" EntitySet="Tipo_Compra" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="Vendedor_Factura" Association="Self.Vendedor_Factura">
+      <End Role="Vendedor" EntitySet="Vendedor" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

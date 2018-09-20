@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ae1c2e773de5423883d028065539c537" Name="Diagram1">
+        <EntityTypeShape EntityType="ProductosModel.Categoria" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductosModel.Color" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductosModel.Estado" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductosModel.Factura" Width="1.5" PointX="14.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductosModel.Marca" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductosModel.Modelo" Width="1.5" PointX="5.375" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductosModel.Producto" Width="1.5" PointX="9.125" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductosModel.Tipo_Compra" Width="1.5" PointX="11.375" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductosModel.Vendedor" Width="1.5" PointX="13.875" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="ProductosModel.Categoria_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductosModel.Estado_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductosModel.Tipo_Compra_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductosModel.Vendedor_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductosModel.Marca_Modelo" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductosModel.Marca_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductosModel.Modelo_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductosModel.Color_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductosModel.Factura_Producto" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProductosModel.Usuario" Width="1.5" PointX="5.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

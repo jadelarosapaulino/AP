@@ -13,6 +13,8 @@ namespace AdminProducto.Models
         public string modelo_nombre { get; set; }
         public int? marcaID { get; set; }
         public string marca_nombre { get; set; }
+        public int? categoriaID { get; set; }
+        public string categoria_nombre { get; set; }
 
         conexion conexion = new conexion();
 
@@ -46,6 +48,8 @@ namespace AdminProducto.Models
                                  modelo_nombre = c.Field<string>("modelo_nombre"),
                                  marca_nombre = c.Field<string>("marca_nombre"),
                                  marcaID = c.Field<int>("marcaID"),
+                                 categoria_nombre = c.Field<string>("categoria_nombre"),
+                                 categoriaID = c.Field<int>("categoriaID")
                              }).ToList();
             }
             catch (Exception ex)
@@ -73,6 +77,7 @@ namespace AdminProducto.Models
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@modelo_nombre", mod.modelo_nombre);
                 cmd.Parameters.AddWithValue("@marcaID", mod.marcaID);
+                cmd.Parameters.AddWithValue("@categoriaID", mod.categoriaID);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);

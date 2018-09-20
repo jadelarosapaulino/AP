@@ -32,7 +32,7 @@ namespace AdminProducto.Controllers
             try
             {
                 colores.SetColor(color);
-                msg = "La categoria " + color.color + " se registro correctamente.";
+                msg = color.color + " se registro correctamente.";
             }
             catch
             {

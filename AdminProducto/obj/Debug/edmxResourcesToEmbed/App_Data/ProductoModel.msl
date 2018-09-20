@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProductosModelStoreContainer" CdmEntityContainer="ProductosEntities">
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="ProductosModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="categoriaID" ColumnName="categoriaID" />
+          <ScalarProperty Name="categoria_nombre" ColumnName="categoria_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Color">
+      <EntityTypeMapping TypeName="ProductosModel.Color">
+        <MappingFragment StoreEntitySet="Color">
+          <ScalarProperty Name="colorID" ColumnName="colorID" />
+          <ScalarProperty Name="color1" ColumnName="color" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado">
+      <EntityTypeMapping TypeName="ProductosModel.Estado">
+        <MappingFragment StoreEntitySet="Estado">
+          <ScalarProperty Name="estadoID" ColumnName="estadoID" />
+          <ScalarProperty Name="estado1" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Factura">
+      <EntityTypeMapping TypeName="ProductosModel.Factura">
+        <MappingFragment StoreEntitySet="Factura">
+          <ScalarProperty Name="facturaID" ColumnName="facturaID" />
+          <ScalarProperty Name="factura_fecha" ColumnName="factura_fecha" />
+          <ScalarProperty Name="compra_tipoID" ColumnName="compra_tipoID" />
+          <ScalarProperty Name="vendedorID" ColumnName="vendedorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marca">
+      <EntityTypeMapping TypeName="ProductosModel.Marca">
+        <MappingFragment StoreEntitySet="Marca">
+          <ScalarProperty Name="marcaID" ColumnName="marcaID" />
+          <ScalarProperty Name="marca_nombre" ColumnName="marca_nombre" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modelo">
+      <EntityTypeMapping TypeName="ProductosModel.Modelo">
+        <MappingFragment StoreEntitySet="Modelo">
+          <ScalarProperty Name="modeloID" ColumnName="modeloID" />
+          <ScalarProperty Name="modelo_nombre" ColumnName="modelo_nombre" />
+          <ScalarProperty Name="marcaID" ColumnName="marcaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="ProductosModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="productoID" ColumnName="productoID" />
+          <ScalarProperty Name="serie" ColumnName="serie" />
+          <ScalarProperty Name="precio_compra" ColumnName="precio_compra" />
+          <ScalarProperty Name="precio_venta" ColumnName="precio_venta" />
+          <ScalarProperty Name="marcaID" ColumnName="marcaID" />
+          <ScalarProperty Name="modeloID" ColumnName="modeloID" />
+          <ScalarProperty Name="categoriaID" ColumnName="categoriaID" />
+          <ScalarProperty Name="estadoID" ColumnName="estadoID" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Compra">
+      <EntityTypeMapping TypeName="ProductosModel.Tipo_Compra">
+        <MappingFragment StoreEntitySet="Tipo_Compra">
+          <ScalarProperty Name="compra_tipoID" ColumnName="compra_tipoID" />
+          <ScalarProperty Name="compra_tipo" ColumnName="compra_tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendedor">
+      <EntityTypeMapping TypeName="ProductosModel.Vendedor">
+        <MappingFragment StoreEntitySet="Vendedor">
+          <ScalarProperty Name="vendedorID" ColumnName="vendedorID" />
+          <ScalarProperty Name="vendedor1" ColumnName="vendedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Color_Producto" TypeName="ProductosModel.Color_Producto" StoreEntitySet="Color_Producto">
+      <EndProperty Name="Color">
+        <ScalarProperty Name="colorID" ColumnName="colorID" />
+      </EndProperty>
+      <EndProperty Name="Producto">
+        <ScalarProperty Name="productoID" ColumnName="productoID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Factura_Producto" TypeName="ProductosModel.Factura_Producto" StoreEntitySet="Factura_Producto">
+      <EndProperty Name="Factura">
+        <ScalarProperty Name="facturaID" ColumnName="facturaID" />
+      </EndProperty>
+      <EndProperty Name="Producto">
+        <ScalarProperty Name="productoID" ColumnName="productoID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="Proc_Categoria_Actualiza" FunctionName="ProductosModel.Store.Proc_Categoria_Actualiza" />
+    <FunctionImportMapping FunctionImportName="Proc_Categoria_Consulta" FunctionName="ProductosModel.Store.Proc_Categoria_Consulta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProductosModel.Proc_Categoria_Consulta_Result">
+          <ScalarProperty Name="categoriaID" ColumnName="categoriaID" />
+          <ScalarProperty Name="categoria_nombre" ColumnName="categoria_nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_Categoria_Inserta" FunctionName="ProductosModel.Store.Proc_Categoria_Inserta" />
+    <FunctionImportMapping FunctionImportName="Proc_Color_Actualiza" FunctionName="ProductosModel.Store.Proc_Color_Actualiza" />
+    <FunctionImportMapping FunctionImportName="Proc_Color_Consulta" FunctionName="ProductosModel.Store.Proc_Color_Consulta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProductosModel.Proc_Color_Consulta_Result">
+          <ScalarProperty Name="colorID" ColumnName="colorID" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_Color_Inserta" FunctionName="ProductosModel.Store.Proc_Color_Inserta" />
+    <FunctionImportMapping FunctionImportName="Proc_Color_Producto_Consulta" FunctionName="ProductosModel.Store.Proc_Color_Producto_Consulta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProductosModel.Proc_Color_Producto_Consulta_Result">
+          <ScalarProperty Name="colorID" ColumnName="colorID" />
+          <ScalarProperty Name="productoID" ColumnName="productoID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_Color_Producto_Inserta" FunctionName="ProductosModel.Store.Proc_Color_Producto_Inserta" />
+    <FunctionImportMapping FunctionImportName="Proc_Estado_Actualiza" FunctionName="ProductosModel.Store.Proc_Estado_Actualiza" />
+    <FunctionImportMapping FunctionImportName="Proc_Estado_Consulta" FunctionName="ProductosModel.Store.Proc_Estado_Consulta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProductosModel.Proc_Estado_Consulta_Result">
+          <ScalarProperty Name="estadoID" ColumnName="estadoID" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_Estado_Eliminar" FunctionName="ProductosModel.Store.Proc_Estado_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Proc_Estado_Inserta" FunctionName="ProductosModel.Store.Proc_Estado_Inserta" />
+    <FunctionImportMapping FunctionImportName="Proc_Factura_Consulta" FunctionName="ProductosModel.Store.Proc_Factura_Consulta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProductosModel.Proc_Factura_Consulta_Result">
+          <ScalarProperty Name="facturaID" ColumnName="facturaID" />
+          <ScalarProperty Name="factura_fecha" ColumnName="factura_fecha" />
+          <ScalarProperty Name="compra_tipo" ColumnName="compra_tipo" />
+          <ScalarProperty Name="vendedor" ColumnName="vendedor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_Factura_Inserta" FunctionName="ProductosModel.Store.Proc_Factura_Inserta" />
+    <FunctionImportMapping FunctionImportName="Proc_Factura_Producto_Consulta" FunctionName="ProductosModel.Store.Proc_Factura_Producto_Consulta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProductosModel.Proc_Factura_Producto_Consulta_Result">
+          <ScalarProperty Name="facturaID" ColumnName="facturaID" />
+          <ScalarProperty Name="productoID" ColumnName="productoID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_Factura_Producto_Inserta" FunctionName="ProductosModel.Store.Proc_Factura_Producto_Inserta" />
+    <FunctionImportMapping FunctionImportName="Proc_Marca_Actualiza" FunctionName="ProductosModel.Store.Proc_Marca_Actualiza" />
+    <FunctionImportMapping FunctionImportName="Proc_Marca_Consulta" FunctionName="ProductosModel.Store.Proc_Marca_Consulta" />
+    <FunctionImportMapping FunctionImportName="Proc_Marca_Eliminar" FunctionName="ProductosModel.Store.Proc_Marca_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Proc_Marca_Inserta" FunctionName="ProductosModel.Store.Proc_Marca_Inserta" />
+    <FunctionImportMapping FunctionImportName="Proc_Modelo_Actualiza" FunctionName="ProductosModel.Store.Proc_Modelo_Actualiza" />
+    <FunctionImportMapping FunctionImportName="Proc_Modelo_Consulta" FunctionName="ProductosModel.Store.Proc_Modelo_Consulta" />
+    <FunctionImportMapping FunctionImportName="Proc_Modelo_Inserta" FunctionName="ProductosModel.Store.Proc_Modelo_Inserta" />
+    <FunctionImportMapping FunctionImportName="Proc_Producto_Actualiza" FunctionName="ProductosModel.Store.Proc_Producto_Actualiza" />
+    <FunctionImportMapping FunctionImportName="Proc_Producto_Actualiza_Estado" FunctionName="ProductosModel.Store.Proc_Producto_Actualiza_Estado" />
+    <FunctionImportMapping FunctionImportName="Proc_Producto_Consulta" FunctionName="ProductosModel.Store.Proc_Producto_Consulta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProductosModel.Proc_Producto_Consulta_Result">
+          <ScalarProperty Name="productoID" ColumnName="productoID" />
+          <ScalarProperty Name="serie" ColumnName="serie" />
+          <ScalarProperty Name="precio_compra" ColumnName="precio_compra" />
+          <ScalarProperty Name="precio_venta" ColumnName="precio_venta" />
+          <ScalarProperty Name="marca_nombre" ColumnName="marca_nombre" />
+          <ScalarProperty Name="modelo_nombre" ColumnName="modelo_nombre" />
+          <ScalarProperty Name="categoria_nombre" ColumnName="categoria_nombre" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="total_registros" ColumnName="total_registros" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_Producto_Inserta" FunctionName="ProductosModel.Store.Proc_Producto_Inserta" />
+    <FunctionImportMapping FunctionImportName="Proc_Tipo_Compra_Actualiza" FunctionName="ProductosModel.Store.Proc_Tipo_Compra_Actualiza" />
+    <FunctionImportMapping FunctionImportName="Proc_Tipo_Compra_Consulta" FunctionName="ProductosModel.Store.Proc_Tipo_Compra_Consulta" />
+    <FunctionImportMapping FunctionImportName="Proc_Tipo_Compra_Inserta" FunctionName="ProductosModel.Store.Proc_Tipo_Compra_Inserta" />
+    <FunctionImportMapping FunctionImportName="Proc_Vendedor_Actualiza" FunctionName="ProductosModel.Store.Proc_Vendedor_Actualiza" />
+    <FunctionImportMapping FunctionImportName="Proc_Vendedor_Consulta" FunctionName="ProductosModel.Store.Proc_Vendedor_Consulta" />
+    <FunctionImportMapping FunctionImportName="Proc_Vendedor_Inserta" FunctionName="ProductosModel.Store.Proc_Vendedor_Inserta" />
+  </EntityContainerMapping>
+</Mapping>

@@ -26,13 +26,13 @@ namespace AdminProducto.Controllers
 
         // GET: api/Modelo
         [Route("api/Modelo/Get")]
-        public JsonResult<List<Modelo>> Get(int? modeloID, int? marcaID)
+        public JsonResult<Modelo> Get(int? modeloID)
         {
-            List<Modelo> Resultado = new List<Modelo>();
+            Modelo Resultado = new Modelo();
 
             Modelo modelo = new Modelo();
 
-            Resultado = modelo.Get(modeloID, marcaID).ToList();
+            Resultado = modelo.Get(modeloID).FirstOrDefault();
 
             return Json(Resultado);
         }

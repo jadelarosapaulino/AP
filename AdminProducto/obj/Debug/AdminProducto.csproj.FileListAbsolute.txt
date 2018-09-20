@@ -106,7 +106,6 @@ c:\users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\es\System.Web.R
 c:\users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\es\System.Web.WebPages.resources.dll
 c:\users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\es\System.Web.WebPages.Deployment.resources.dll
 c:\users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\es\System.Web.WebPages.Razor.resources.dll
-c:\users\j.delarosa\source\repos\AdminProducto\AdminProducto\obj\Debug\AdminProducto.csprojAssemblyReference.cache
 c:\users\j.delarosa\source\repos\AdminProducto\AdminProducto\obj\Debug\AdminProducto.csproj.CoreCompileInputs.cache
 c:\users\j.delarosa\source\repos\AdminProducto\AdminProducto\obj\Debug\AdminProducto.csproj.CopyComplete
 c:\users\j.delarosa\source\repos\AdminProducto\AdminProducto\obj\Debug\AdminProducto.dll
@@ -149,3 +148,17 @@ C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\zh-Hant\System.
 C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\System.Web.Cors.dll
 C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\System.Web.Http.Cors.dll
 C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\System.Web.Http.Cors.xml
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\obj\Debug\AdminProducto.csprojAssemblyReference.cache
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\OpenPop.dll
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\Microsoft.IdentityModel.JsonWebTokens.pdb
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\Microsoft.IdentityModel.Logging.pdb
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\Microsoft.IdentityModel.Tokens.pdb
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\j.delarosa\source\repos\AdminProducto\AdminProducto\bin\System.IdentityModel.Tokens.Jwt.xml

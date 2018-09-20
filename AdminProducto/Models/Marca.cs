@@ -137,6 +137,8 @@ namespace AdminProducto.Models
                 cmd.CommandText = "Proc_Marca_Eliminar";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@marcaID", marcaID);
+                cmd.Parameters.AddWithValue("@marcaID", marcaID);
+                cmd.Parameters.AddWithValue("", marcaID);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 cn.Close();
